@@ -1,0 +1,93 @@
+Docker file -> for flask application
+
+
+FROM python:3.9
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY . .
+
+CMD ["python", "myapp.py"]
+
+
+python file -> for the code
+
+
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+
+
+
+html file code -> it should be in folder named templates and other 3 files should be in a different folder.
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Flask App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>🚀 Hello Rishi!</h1>
+    <p>Your Flask app is running inside Docker.</p>
+</div>
+
+</body>
+</html>
+
+
+
+requirements.txt file ->
+
+
+flask
+
+
+
+
+
+
+

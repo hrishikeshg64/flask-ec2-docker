@@ -1,0 +1,43 @@
+
+✅ Step 5: Launch EC2
+
+Settings:
+
+AMI → Ubuntu 22.04
+
+Instance type → t2.micro (free tier)
+
+Key pair → create/download
+
+Allow ports:
+
+SSH (22)
+
+Custom TCP (5000) ⚠ IMPORTANT
+
+Click Launch.
+
+
+on ec2 -> sudo apt update
+
+on ec2 -> sudo apt install docker.io -y
+
+on ec2 -> sudo systemctl start docker
+
+on ec2 -> sudo usermod -aG docker ubuntu
+
+on ec2 -> exit
+
+close the EC2 connect then connect again with same instance
+
+on ec2 -> docker ps
+
+on ec2 -> docker pull rishigaikwad/myapp:v1
+
+on ec2 -> docker run -d -p 5000:5000 rishigaikwad/myapp:v1
+
+on ec2 -> docker ps
+
+on browser -> http://ip-address:5000
+
+
